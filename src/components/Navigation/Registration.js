@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import axios from 'axios'; // Импортируйте axios для выполнения запросов к серверу
+
+import axios from 'axios';
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -8,8 +8,6 @@ const RegisterPage = () => {
     email: '',
     password: '',
   });
-
-  const history = useHistory();
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -26,7 +24,7 @@ const RegisterPage = () => {
       const response = await axios.post('https://connections-api.herokuapp.com/users/signup', formData);
 
       if (response.status === 200) {
-        history.push('/login');
+        window.location.href = '/login';
       } else {
         console.error('Registration failed');
       }
@@ -71,7 +69,7 @@ const RegisterPage = () => {
         </label>
         <button type="submit">Register</button>
       </form>
-      <button onClick={() => history.push('/login')}>Go to Login</button>
+      <button>Go to Login</button>
     </div>
   );
 };

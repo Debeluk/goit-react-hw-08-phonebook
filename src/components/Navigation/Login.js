@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
-const LoginPage = ({ history }) => {
+const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const LoginPage = ({ history }) => {
       });
 
       if (response.status === 200) {
-        history.push('/contacts');
+        window.location.href = '/contacts';
       } else {
         console.error('Login failed');
       }

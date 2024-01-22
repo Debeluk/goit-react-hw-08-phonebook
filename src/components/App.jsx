@@ -1,19 +1,19 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { store } from '../redux/store';
-import { Route, Router, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import LoginPage from './Navigation/Login';
-import RegisterPage from './Navigation/registration';
+import RegisterPage from './Navigation/Registration';
+import PrivatePhonebook from './Navigation/PrivatePhonebook';
 
 const App = () => {
   return (
     <Provider store={store}>
       <Router>
         <div>
-          <Switch>
             <Route path="/login" component={LoginPage} />
             <Route path='/registration' component={RegisterPage} />
-          </Switch>
+            <Route path="/contacts" component={PrivatePhonebook} />
         </div>
       </Router>
     </Provider>
