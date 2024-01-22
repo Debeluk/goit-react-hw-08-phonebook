@@ -11,7 +11,7 @@ export const fetchContacts = createAsyncThunk(
 
       const response = await axios.get(`${API_URL}/contacts`, {
         headers: {
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       });
 
@@ -22,7 +22,6 @@ export const fetchContacts = createAsyncThunk(
   }
 );
 
-
 export const addContact = createAsyncThunk(
   'contacts/addContact',
   async (contactData, { getState }) => {
@@ -31,7 +30,7 @@ export const addContact = createAsyncThunk(
 
       const response = await axios.post(`${API_URL}/contacts`, contactData, {
         headers: {
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
       });
@@ -51,7 +50,7 @@ export const deleteContact = createAsyncThunk(
 
       await axios.delete(`${API_URL}/contacts/${contactId}`, {
         headers: {
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
       });
 
@@ -70,26 +69,27 @@ const contactsSlice = createSlice({
     error: null,
   },
   reducers: {},
-  extraReducers: {
-    [fetchContacts.pending]: state => {
-      state.isLoading = true;
-    },
-    [fetchContacts.fulfilled]: (state, action) => {
-      state.isLoading = false;
-      state.items = action.payload;
-    },
-    [fetchContacts.rejected]: (state, action) => {
-      state.isLoading = false;
-      state.error = action.error.message;
-    },
-    [addContact.fulfilled]: (state, action) => {
-      state.items.push(action.payload);
-    },
-    [deleteContact.fulfilled]: (state, action) => {
-      state.items = state.items.filter(
-        contact => contact.id !== action.payload
-      );
-    },
+  extraReducers: builder => {
+    builder
+      .addCase(fetchContacts.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(fetchContacts.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.items = action.payload;
+      })
+      .addCase(fetchContacts.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message;
+      })
+      .addCase(addContact.fulfilled, (state, action) => {
+        state.items.push(action.payload);
+      })
+      .addCase(deleteContact.fulfilled, (state, action) => {
+        state.items = state.items.filter(
+          contact => contact.id !== action.payload
+        );
+      });
   },
 });
 
