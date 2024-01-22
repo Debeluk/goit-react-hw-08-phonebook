@@ -1,49 +1,64 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-const API_URL = 'https://65a51c5a52f07a8b4a3e5f05.mockapi.io/contacts';
+const API_URL = 'https://connections-api.herokuapp.com';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchContacts',
-  async () => {
+  async (_, { getState }) => {
     try {
-      const response = await fetch(API_URL, {
-        method: 'GET',
+      const { token } = getState().auth;
+
+      const response = await axios.get(`${API_URL}/contacts`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
       });
 
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-
-      const data = await response.json();
-      console.log('Fetched contacts:', data);
-      return data;
+      return response.data;
     } catch (error) {
       throw error;
     }
   }
 );
 
+
 export const addContact = createAsyncThunk(
   'contacts/addContact',
-  async contactData => {
-    const response = await fetch(API_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(contactData),
-    });
-    return response.json();
+  async (contactData, { getState }) => {
+    try {
+      const { token } = getState().auth;
+
+      const response = await axios.post(`${API_URL}/contacts`, contactData, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
   }
 );
 
 export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
-  async contactId => {
-    await fetch(`${API_URL}/${contactId}`, {
-      method: 'DELETE',
-    });
-    return contactId;
+  async (contactId, { getState }) => {
+    try {
+      const { token } = getState().auth;
+
+      await axios.delete(`${API_URL}/contacts/${contactId}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      });
+
+      return contactId;
+    } catch (error) {
+      throw error;
+    }
   }
 );
 
