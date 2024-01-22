@@ -5,16 +5,14 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoginPage from './Navigation/Login';
 import RegisterPage from './Navigation/Registration';
 import PrivatePhonebook from './Navigation/PrivatePhonebook';
-import Navigator from './Navigation/Navigator';
+// import Navigator from './Navigation/Navigator';
 import HomePage from './Navigation/Homepage';
 
 const App = () => {
   return (
       <Router>
         <Routes>
-          <HomePage/>
-          <Navigator />
-          <Route path='/' component={Navigator} />
+          <Route path='/' component={HomePage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/registration" component={RegisterPage} />
           <Route path="/contacts" component={PrivatePhonebook} />
