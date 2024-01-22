@@ -94,6 +94,3 @@ const contactsSlice = createSlice({
 });
 
 export default contactsSlice.reducer;
-
-
-//test
