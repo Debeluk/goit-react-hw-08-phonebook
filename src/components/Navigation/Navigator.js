@@ -6,6 +6,7 @@ const Navigator = () => {
     <nav>
       <ul>
         <li>
+            <h1>Test</h1>
           <NavLink to="/login" activeClassName="active">
             Login
           </NavLink>

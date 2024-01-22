@@ -12,7 +12,7 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <Routes>
-          <Navigator></Navigator>
+          <Navigator />
           <Route path="/login" component={LoginPage} />
           <Route path="/registration" component={RegisterPage} />
           <Route path="/contacts" component={PrivatePhonebook} />
