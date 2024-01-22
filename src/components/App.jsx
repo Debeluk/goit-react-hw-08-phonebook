@@ -1,14 +1,9 @@
-import React, { useEffect } from 'react';
-import ContactForm from './ContactForm/ContactForm';
-import ContactList from './ContactList/ContactList';
-import Filter from './Filter/Filter';
+import React from 'react';
 import { Provider } from 'react-redux';
 import { store } from '../redux/store';
-import { fetchContacts } from '../redux/contactsSlice';
-import { Route, Router } from 'react-router-dom';
+import { Route, Router, Switch } from 'react-router-dom';
 import LoginPage from './Navigation/Login';
 import RegisterPage from './Navigation/registration';
-
 
 const App = () => {
   return (
@@ -25,6 +20,7 @@ const App = () => {
   );
 };
 
+export default App;
 
 // const App = () => {
 //   useEffect(() => {
@@ -44,5 +40,3 @@ const App = () => {
 //     </Provider>
 //   );
 // };
-
-export default App;
