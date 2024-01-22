@@ -10,14 +10,15 @@ import HomePage from './Navigation/Homepage';
 
 const App = () => {
   return (
-      <Router>
-        <Routes>
-          <Route path='/' component={HomePage} />
-          <Route path="/login" component={LoginPage} />
-          <Route path="/registration" component={RegisterPage} />
-          <Route path="/contacts" component={PrivatePhonebook} />
-        </Routes>
-      </Router>
+    <HomePage/>
+      // <Router>
+      //   <Routes>
+      //     <Route path='/' component={HomePage} />
+      //     <Route path="/login" component={LoginPage} />
+      //     <Route path="/registration" component={RegisterPage} />
+      //     <Route path="/contacts" component={PrivatePhonebook} />
+      //   </Routes>
+      // </Router>
   );
 };
 
