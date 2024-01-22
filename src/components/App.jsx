@@ -12,12 +12,10 @@ const App = () => {
 
     <Provider store={store}>
       <Router>
-        <div>
             <Route path="/login" component={LoginPage} />
             <Route path='/registration' component={RegisterPage} />
             <Route path="/contacts" component={PrivatePhonebook} />
             <Route exact path="/" component={HomePage} />
-        </div>
       </Router>
     </Provider>
   );
