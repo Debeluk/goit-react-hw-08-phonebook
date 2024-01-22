@@ -1,10 +1,10 @@
 import React from 'react';
 // import { Provider } from 'react-redux';
 // import { store } from '../redux/store';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import LoginPage from './Navigation/Login';
-import RegisterPage from './Navigation/Registration';
-import PrivatePhonebook from './Navigation/PrivatePhonebook';
+// import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// import LoginPage from './Navigation/Login';
+// import RegisterPage from './Navigation/Registration';
+// import PrivatePhonebook from './Navigation/PrivatePhonebook';
 // import Navigator from './Navigation/Navigator';
 import HomePage from './Navigation/Homepage';
 
