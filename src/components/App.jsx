@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { store } from '../redux/store';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoginPage from './Navigation/Login';
 import RegisterPage from './Navigation/Registration';
 import PrivatePhonebook from './Navigation/PrivatePhonebook';
@@ -9,13 +9,14 @@ import HomePage from './Navigation/Homepage';
 
 const App = () => {
   return (
-
     <Provider store={store}>
       <Router>
-            <Route path="/login" component={LoginPage} />
-            <Route path='/registration' component={RegisterPage} />
-            <Route path="/contacts" component={PrivatePhonebook} />
-            <Route exact path="/" component={HomePage} />
+        <Routes>
+          <Route path="/login" component={LoginPage} />
+          <Route path="/registration" component={RegisterPage} />
+          <Route path="/contacts" component={PrivatePhonebook} />
+          <Route exact path="/" component={HomePage} />
+        </Routes>
       </Router>
     </Provider>
   );
