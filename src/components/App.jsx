@@ -1,6 +1,6 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import { store } from '../redux/store';
+// import { Provider } from 'react-redux';
+// import { store } from '../redux/store';
 import { BrowserRouter as Route, Routes } from 'react-router-dom';
 import LoginPage from './Navigation/Login';
 import RegisterPage from './Navigation/Registration';
@@ -10,14 +10,12 @@ import HomePage from './Navigation/Homepage';
 
 const App = () => {
   return (
-    <Provider store={store}>
         <Routes>
           <Route path='/' component={HomePage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/registration" component={RegisterPage} />
           <Route path="/contacts" component={PrivatePhonebook} />
         </Routes>
-    </Provider>
   );
 };
 
