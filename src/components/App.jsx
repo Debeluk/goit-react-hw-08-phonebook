@@ -6,12 +6,16 @@ import LoginPage from './Navigation/Login';
 import RegisterPage from './Navigation/Registration';
 import PrivatePhonebook from './Navigation/PrivatePhonebook';
 import Navigator from './Navigation/Navigator';
+import HomePage from './Navigation/Homepage';
 
 const App = () => {
   return (
     <Provider store={store}>
+      <HomePage />
+      <Navigator />
       <Router>
         <Routes>
+          <HomePage/>
           <Navigator />
           <Route path="/login" component={LoginPage} />
           <Route path="/registration" component={RegisterPage} />
