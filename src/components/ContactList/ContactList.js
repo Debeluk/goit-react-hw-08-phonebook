@@ -35,7 +35,7 @@ const ContactList = () => {
         <ContactItem
           key={contact.id}
           name={contact.name}
-          phone={contact.phone}
+          number={contact.number}
           onDelete={() => dispatch(deleteContact(contact.id))}
         />
       ))}

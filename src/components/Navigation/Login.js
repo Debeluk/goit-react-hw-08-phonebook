@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -24,7 +26,9 @@ const LoginPage = () => {
       });
 
       if (response.status === 200) {
-        window.location.href = '/contacts';
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('email', response.data.user.email);
+        navigate('/contacts');
       } else {
         console.error('Login failed');
       }
@@ -59,6 +63,8 @@ const LoginPage = () => {
         </label>
         <button type="submit">Login</button>
       </form>
+      <button onClick={() => navigate('/registration')}>Go to registration</button>
+      <button onClick={() => navigate('/')}>Go back</button>
     </div>
   );
 };

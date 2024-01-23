@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
 
 const RegisterPage = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,12 +24,17 @@ const RegisterPage = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('https://connections-api.herokuapp.com/users/signup', formData);
+      const response = await axios.post(
+        'https://connections-api.herokuapp.com/users/signup',
+        formData
+      );
 
-      if (response.status === 200) {
-        window.location.href = '/login';
+      if (response.status === 201) {
+        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('email', response.data.user.email);
+        navigate('/contacts');
       } else {
-        console.error('Registration failed');
+        alert('Registration failed');
       }
     } catch (error) {
       console.error('Registration error:', error);
@@ -69,7 +77,8 @@ const RegisterPage = () => {
         </label>
         <button type="submit">Register</button>
       </form>
-      <button>Go to Login</button>
+      <button onClick={() => navigate('/login')}>Go to Login</button>
+      <button onClick={() => navigate('/')}>Go back</button>
     </div>
   );
 };

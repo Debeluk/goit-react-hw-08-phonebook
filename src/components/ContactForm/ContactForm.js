@@ -4,7 +4,7 @@ import { addContact } from '../../redux/contactsSlice';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
   const dispatch = useDispatch();
   const contacts = useSelector(state => state.contacts.items);
 
@@ -13,7 +13,7 @@ const ContactForm = () => {
     if (name === 'name') {
       setName(value);
     } else if (name === 'phone') {
-      setPhone(value);
+      setNumber(value);
     }
   };
 
@@ -23,7 +23,7 @@ const ContactForm = () => {
     const isDuplicate = contacts.some(
       contact =>
         contact.name.toLowerCase() === name.toLowerCase() ||
-        contact.phone === phone
+        contact.number === number
     );
 
     if (isDuplicate) {
@@ -31,9 +31,9 @@ const ContactForm = () => {
       return;
     }
 
-    dispatch(addContact({ name, phone }));
+    dispatch(addContact({ name, number }));
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   return (
@@ -53,7 +53,7 @@ const ContactForm = () => {
         <input
           type="tel"
           name="phone"
-          value={phone}
+          value={number}
           onChange={handleChange}
           required
         />

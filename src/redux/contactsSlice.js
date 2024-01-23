@@ -1,13 +1,13 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const API_URL = 'https://connections-api.herokuapp.com';
+export const API_URL = 'https://connections-api.herokuapp.com';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchContacts',
-  async (_, { getState }) => {
+  async () => {
     try {
-      const { token } = getState().auth;
+      const token = localStorage.getItem('token');
 
       const response = await axios.get(`${API_URL}/contacts`, {
         headers: {
@@ -24,10 +24,9 @@ export const fetchContacts = createAsyncThunk(
 
 export const addContact = createAsyncThunk(
   'contacts/addContact',
-  async (contactData, { getState }) => {
+  async (contactData) => {
     try {
-      const { token } = getState().auth;
-
+      const token = localStorage.getItem('token');
       const response = await axios.post(`${API_URL}/contacts`, contactData, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -44,9 +43,9 @@ export const addContact = createAsyncThunk(
 
 export const deleteContact = createAsyncThunk(
   'contacts/deleteContact',
-  async (contactId, { getState }) => {
+  async (contactId) => {
     try {
-      const { token } = getState().auth;
+      const token = localStorage.getItem('token');
 
       await axios.delete(`${API_URL}/contacts/${contactId}`, {
         headers: {
