@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import axios from 'axios';
 
 const RegisterPage = () => {
@@ -42,45 +41,113 @@ const RegisterPage = () => {
   };
 
   return (
-    <div>
-      <h2>Registration</h2>
+    <div style={containerStyle}>
+      <h2 style={titleStyle}>Registration</h2>
       <form onSubmit={handleSubmit}>
-        <label>
+        <label style={labelStyle}>
           Name:
           <input
             type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
+            style={inputStyle}
             required
           />
         </label>
-        <label>
+        <label style={labelStyle}>
           Email:
           <input
             type="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
+            style={inputStyle}
             required
           />
         </label>
-        <label>
+        <label style={labelStyle}>
           Password:
           <input
             type="password"
             name="password"
             value={formData.password}
             onChange={handleChange}
+            style={inputStyle}
             required
           />
         </label>
-        <button type="submit">Register</button>
+        <button type="submit" style={buttonStyleGreen}>
+          Register
+        </button>
       </form>
-      <button onClick={() => navigate('/login')}>Go to Login</button>
-      <button onClick={() => navigate('/')}>Go back</button>
+      <button style={buttonStyle} onClick={() => navigate('/login')}>
+        Go to Login
+      </button>
+      <button style={buttonStyle} onClick={() => navigate('/')}>
+        Go back
+      </button>
     </div>
   );
+};
+
+const containerStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  width: '400px',
+  margin: '0 auto',
+  padding: '8px',
+  border: '1px solid gray',
+  borderRadius: '10px',
+  boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
+};
+
+const titleStyle = {
+  fontSize: '40px',
+  marginBottom: '20px',
+  textAlign: 'center',
+};
+
+const labelStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  marginBottom: '10px',
+};
+
+const inputStyle = {
+  width: '100%',
+  padding: '10px',
+  border: '1px solid #ccc',
+  borderRadius: '5px',
+  fontSize: '16px',
+};
+
+const buttonStyleGreen = {
+  width: '100%',
+  padding: '10px',
+  borderRadius: '5px',
+  backgroundColor: 'green',
+  color: 'white',
+  border: 'none',
+  cursor: 'pointer',
+  transition: 'background-color 0.3s ease',
+  fontSize: '16px',
+  marginTop: '10px',
+};
+
+const buttonStyle = {
+  width: '50%',
+  padding: '10px',
+  borderRadius: '5px',
+  backgroundColor: '#007bff',
+  color: 'white',
+  border: 'none',
+  cursor: 'pointer',
+  transition: 'background-color 0.3s ease',
+  fontSize: '16px',
+  marginTop: '10px',
 };
 
 export default RegisterPage;

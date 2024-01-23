@@ -22,25 +22,57 @@ const ContactList = () => {
   const visibleContacts = getVisibleContacts();
 
   if (isLoading) {
-    return <p>Loading contacts...</p>;
+    return (
+      <div style={containerStyle}>
+        <p>Loading contacts...</p>
+      </div>
+    );
   }
 
   if (error) {
-    return <p>An error occurred: {error}</p>;
+    return (
+      <div style={containerStyle}>
+        <p>An error occurred: {error}</p>
+      </div>
+    );
   }
 
   return (
-    <ul>
-      {visibleContacts.map(contact => (
-        <ContactItem
-          key={contact.id}
-          name={contact.name}
-          number={contact.number}
-          onDelete={() => dispatch(deleteContact(contact.id))}
-        />
-      ))}
-    </ul>
+    <div style={containerStyle}>
+      <ul style={ulStyle}>
+        {visibleContacts.map(contact => (
+          <li key={contact.id} style={liStyle}>
+            <ContactItem
+              name={contact.name}
+              number={contact.number}
+              onDelete={() => dispatch(deleteContact(contact.id))}
+            />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
+};
+
+const containerStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  width: '500px',
+  margin: '0',
+  padding: '0px',
+  border: '1px solid gray',
+  borderTop: 'none',
+  borderRadius: '0 0 10px 10px',
+  boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
+};
+
+const ulStyle = {
+  listStyle: 'none',
+};
+
+const liStyle = {
+  marginBottom: '2px',
 };
 
 export default ContactList;
