@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const HomePage = () => {
   return (
     <div style={containerStyle}>
-      <h1 style={titleStyle}>Welcome to Phonebook</h1>
+      <h1 style={titleStyle}>Welcome to Phonebook!</h1>
       <div style={menuContainerStyle}>
         <Link to="/login" style={menuItemStyle}>
           <button style={buttonStyle}>Login</button>
