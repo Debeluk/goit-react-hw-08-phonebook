@@ -43,7 +43,7 @@ const RegisterPage = () => {
   return (
     <div style={containerStyle}>
       <h2 style={titleStyle}>Registration</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={formStyle}>
         <label style={labelStyle}>
           Name:
           <input
@@ -117,7 +117,7 @@ const labelStyle = {
 };
 
 const inputStyle = {
-  width: '100%',
+  width: '90%',
   padding: '10px',
   border: '1px solid #ccc',
   borderRadius: '5px',
@@ -125,7 +125,7 @@ const inputStyle = {
 };
 
 const buttonStyleGreen = {
-  width: '100%',
+  width: '90%',
   padding: '10px',
   borderRadius: '5px',
   backgroundColor: 'green',
@@ -138,7 +138,7 @@ const buttonStyleGreen = {
 };
 
 const buttonStyle = {
-  width: '50%',
+  width: '70%',
   padding: '10px',
   borderRadius: '5px',
   backgroundColor: '#007bff',
@@ -149,5 +149,13 @@ const buttonStyle = {
   fontSize: '16px',
   marginTop: '10px',
 };
+
+const formStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  maxWidth: '500px',
+  margin: '0 auto',
+}
 
 export default RegisterPage;

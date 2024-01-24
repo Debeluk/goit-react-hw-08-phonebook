@@ -90,7 +90,7 @@ const labelStyle = {
 };
 
 const inputStyle = {
-  width: '100%',
+  width: '90%',
   padding: '10px',
   border: '1px solid #ccc',
   borderRadius: '5px',
