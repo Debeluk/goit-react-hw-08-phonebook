@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-
-export const API_URL = 'https://connections-api.herokuapp.com';
+import { API_URL } from 'components/Navigation/consts/ApiUrl';
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetchContacts',

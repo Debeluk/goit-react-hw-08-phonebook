@@ -7,7 +7,7 @@ import HomePage from './Navigation/Homepage';
 
 const App = () => {
   return (
-        <Routes>
+        <Routes path="/" >
           <Route path='/' element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/registration" element={<RegisterPage />} />
